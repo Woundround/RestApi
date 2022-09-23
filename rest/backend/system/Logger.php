@@ -3,6 +3,10 @@
 class Logger{
 
     public static function message($message = NULL){
+        
+        if (!$message) {
+            echo null;
+        }
 
         echo json_encode($message);
 
@@ -24,13 +28,17 @@ class Logger{
             ));
 
             http_response_code($code);    
-        
-        }else{
-
-            echo $message[400];
-
+            
+            return;        
         }
 
+        if (isset($message[400]) {
+            echo $message[400];
+          
+            return;
+        }
+
+       http_response_code(500);
     }
 
 }
